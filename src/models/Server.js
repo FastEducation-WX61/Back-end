@@ -8,11 +8,11 @@ const fileUpload = require("express-fileupload");
 class Server{
     constructor(){
         this.app = express();
+        this.port = process.env.PORT;
         // Llamamos a los métodos
+        this.conectar();
         
         this.middlewares();
-
-        this.conectar();
 
         this.llamarRutas();
     }
@@ -39,8 +39,8 @@ class Server{
         routerApi(this.app);
     }
     listen(){
-        this.app.listen(process.env.PORT,() =>{
-            console.log("SERVER RUNNING")
+        this.app.listen(this.port,() =>{
+            console.log("Server running in the port:", this.port)
         })
     }
 }
