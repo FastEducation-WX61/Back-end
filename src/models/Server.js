@@ -2,15 +2,16 @@ const express = require("express");
 const conectarBaseDatos = require("../config/database");
 const routerApi = require("../routes/indexRoute");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 class Server{
     constructor(){
         this.app = express();
+        this.port = process.env.PORT;
         // Llamamos a los métodos
+        this.conectar();
         
         this.middlewares();
-
-        this.conectar();
 
         this.llamarRutas();
     }
@@ -22,7 +23,12 @@ class Server{
         this.app.use(express.json());
 
         // Me permite recibir información
-        this.app.use(express.urlencoded({extended:false}));
+        this.app.use(express.urlencoded({extended:true}));
+
+        this.app.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: "/tmp/"
+        }))
 
     }
     async conectar(){
@@ -32,8 +38,8 @@ class Server{
         routerApi(this.app);
     }
     listen(){
-        this.app.listen(3000,() =>{
-            console.log("SERVER RUNNING")
+        this.app.listen(this.port,() =>{
+            console.log("Server running in the port:", this.port)
         })
     }
 }
