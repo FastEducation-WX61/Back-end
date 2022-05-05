@@ -15,7 +15,7 @@ class Server{
 
         this.llamarRutas();
     }
-    middlewares(){ // Es un proceso que ocurre cuando se hace una petición HTTP
+    middlewares(){ //Es un proceso que ocurre cuando se hace una petición HTTP
 
         this.app.use(cors());
 
