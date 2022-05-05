@@ -3,6 +3,7 @@ const rutaAprendizaje = require("../routes/rutasAprendizajeRoute");
 const conectarBaseDatos = require("../config/database");
 const routerApi = require("../routes/indexRoute");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 class Server{
     constructor(){
@@ -23,7 +24,12 @@ class Server{
         this.app.use(express.json());
 
         // Me permite recibir información
-        this.app.use(express.urlencoded({extended:false}));
+        this.app.use(express.urlencoded({extended:true}));
+
+        this.app.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: "/tmp/"
+        }))
 
     }
     async conectar(){
