@@ -24,6 +24,3 @@ exports.crearRuta = async (req, res) => { // El async es para indicar que esto v
         console.log(error);
     }
 }
-exports.obtenerRutas2 = (req, res) => {
-    res.send("Hola a todos");
-}
