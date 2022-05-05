@@ -39,7 +39,7 @@ class Server{
         routerApi(this.app);
     }
     listen(){
-        this.app.listen(3000,() =>{
+        this.app.listen(process.env.PORT,() =>{
             console.log("SERVER RUNNING")
         })
     }
