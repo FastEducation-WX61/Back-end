@@ -1,5 +1,4 @@
 const express = require("express");
-const rutaAprendizaje = require("../routes/rutasAprendizajeRoute");
 const conectarBaseDatos = require("../config/database");
 const routerApi = require("../routes/indexRoute");
 const cors = require("cors");
