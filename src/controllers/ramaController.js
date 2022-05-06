@@ -3,8 +3,8 @@ const Rama = require("../models/Rama");
 exports.crearRama = async(req, res) =>{
     try{
         await Rama.create(req.body);
-        req.status(200).json({
-            msg: "El curso fue agregado correctamente!"
+        res.status(200).json({
+            msg: "La rama fue agregado correctamente!"
         })
     }
     catch(error){
@@ -17,9 +17,9 @@ exports.crearRama = async(req, res) =>{
 exports.obtenerRamas = async (req, res) => {
     try{
         const ramas = await Rama.find();
-        req.status(200).json({
+        res.status(200).json(
             ramas
-        })
+        )
     }
     catch(error){
         res.status(400).json({

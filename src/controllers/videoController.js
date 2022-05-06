@@ -17,7 +17,7 @@ exports.subirVideo = async (req, res) => { // El async es para indicar que esto 
     try{
         await Video.create(req.body); // El await espera que el proceso termina para seguir
         res.status(200).json({
-            msg: "Ruta agregada correctamente!"
+            msg: "Video agregado correctamente!"
         });
     }
     catch(error){

@@ -5,8 +5,18 @@ const {generateJsonWebToken} = require("../helpers/generarJWT");
 
 cloudinary.config(process.env.CLOUDINARY_URL);
 
-exports.obtenerUsuarios = (req, res) => {
-
+exports.obtenerUsuarios = async (req, res) => {
+    try{
+        const usuarios =  await User.find();
+        res.status(200).json(
+            usuarios
+        )
+    }
+    catch(error){
+        res.status(400).json(
+            error
+        )
+    }
 }
 
 exports.registrarUsuario = async (req, res) => {
