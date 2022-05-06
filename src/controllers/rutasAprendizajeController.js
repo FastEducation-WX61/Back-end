@@ -3,9 +3,9 @@ const RutaAprendizaje = require("../models/RutaAprendizaje");
 exports.obtenerRutas = async (req, res) => {
     try{
         const rutas = await RutaAprendizaje.find();
-        res.status(200).json({
+        res.status(200).json(
             rutas
-        })
+        )
     }
     catch(error){
         res.status(400).json({
