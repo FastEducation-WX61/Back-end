@@ -26,5 +26,15 @@ exports.obtenerCursos = async (req, res) => {
             msg: error
         })
     }
+}
 
+exports.obtenerCurso = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const curso = await Curso.findById(id);
+        res.status(200).json(curso)
+    }
+    catch(error){
+        res.status(400).json(error)
+    }
 }

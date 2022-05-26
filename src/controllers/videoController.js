@@ -3,9 +3,9 @@ const Video = require("../models/Video");
 exports.obtenerVideos = async (req, res) => {
     try{
         const videos = await Video.find();
-        res.status(200).json({
+        res.status(200).json(
             videos
-        })
+        )
     }
     catch(error){
         res.status(400).json({
@@ -23,4 +23,16 @@ exports.subirVideo = async (req, res) => { // El async es para indicar que esto 
     catch(error){
         console.log(error);
     }
+}
+
+exports.obtenerVideo = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const video = await Video.findById(id);
+        res.status(200).json(video)
+    }
+    catch(error){
+        res.status(400).json(error)
+    }
+
 }

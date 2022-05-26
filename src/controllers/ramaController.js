@@ -28,3 +28,15 @@ exports.obtenerRamas = async (req, res) => {
     }
 
 }
+
+exports.obtenerRama = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const rama = await Rama.findById(id);
+        res.status(200).json(rama)
+    }
+    catch(error){
+        res.status(400).json(error)
+    }
+
+}

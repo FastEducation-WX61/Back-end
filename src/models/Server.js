@@ -34,6 +34,9 @@ class Server{
     async conectar(){
         await conectarBaseDatos();
     }
+    getApp(){
+        return this.app;
+    }
     llamarRutas(){
         routerApi(this.app);
     }

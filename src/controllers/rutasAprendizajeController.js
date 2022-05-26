@@ -21,6 +21,18 @@ exports.crearRuta = async (req, res) => { // El async es para indicar que esto v
         });
     }
     catch(error){
-        console.log(error);
+        res.status(400).json(error)
     }
+}
+
+exports.obtenerRuta = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const ruta = await RutaAprendizaje.findById(id);
+        res.status(200).json(ruta)
+    }
+    catch(error){
+        res.status(400).json(error)
+    }
+
 }
